@@ -1,0 +1,12 @@
+version: '3'
+tasks:
+  set-os-vars:
+    cmds:
+      - GOBIN="$PWD/bin" go install -i github.com/twitchtv/retool
+      - GOBIN="$PWD/bin" go install -i github.com/google/wire/cmd/wire
+  run-dev:
+    cmds:
+      - ENV=development go run src/main/main.go
+  run-prod:
+    cmds:
+      - ENV=production go run src/main/main.go
