@@ -14,6 +14,15 @@ type UserMgmRepository struct {
 func NewUserMgmRepository() *UserMgmRepository {
 	return &UserMgmRepository{}
 }
+func (u *UserMgmRepository) FindUserByUid(uid string) (*entity.UserEntity, error) {
+	userCollection := mgm.Coll(&entity.UserEntity{})
+	userByUid := &entity.UserEntity{}
+	err := userCollection.FindByID(uid, userByUid)
+	if err != nil {
+		return nil, err
+	}
+	return userByUid, nil
+}
 
 func (u *UserMgmRepository) FindUserByEmailOrDisplayName(emailOrDisplayName string) (*entity.UserEntity, error) {
 	userCollection := mgm.Coll(&entity.UserEntity{})

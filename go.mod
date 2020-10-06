@@ -5,6 +5,7 @@ go 1.15
 require (
 	firebase.google.com/go/v4 v4.0.0
 	github.com/Kamva/mgm/v3 v3.0.1
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/go-bongo/bongo v0.10.4
 	github.com/joho/godotenv v1.3.0
 	github.com/labstack/echo/v4 v4.1.17

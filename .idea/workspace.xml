@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5caf5db-600f-43d0-a4bf-20509778db99" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env.dev" beforeDir="false" afterPath="$PROJECT_DIR$/.env.dev" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/adapter/rest/UserRest.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/adapter/rest/UserRest.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/domain/dto/UserTokenDto.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/domain/dto/UserTokenDto.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/usecases/interactors/UserLoginInteractor.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/usecases/interactors/UserLoginInteractor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/domain/repository/IUserRepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/domain/repository/IUserRepository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/domain/repository/impl/UserBongoRepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/domain/repository/impl/UserBongoRepository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/domain/repository/impl/UserMgmRepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/domain/repository/impl/UserMgmRepository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/usecases/services/JwtService.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/usecases/services/JwtService.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,10 +98,10 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="754" y="330" key="#com.intellij.fileTypes.FileTypeChooser/62.0.1858.1080@62.0.1858.1080" timestamp="1600927942603" />
-    <state x="796" y="256" key="#com.intellij.ide.util.MemberChooser" timestamp="1601622731027">
+    <state x="796" y="256" key="#com.intellij.ide.util.MemberChooser" timestamp="1601962840667">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state x="796" y="256" key="#com.intellij.ide.util.MemberChooser/62.0.1858.1080@62.0.1858.1080" timestamp="1601622731027" />
+    <state x="796" y="256" key="#com.intellij.ide.util.MemberChooser/62.0.1858.1080@62.0.1858.1080" timestamp="1601962840667" />
     <state x="771" y="295" key="FileChooserDialogImpl" timestamp="1600923614328">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
@@ -118,10 +122,10 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state width="1815" height="288" key="GridCell.Tab.0.right/62.0.1858.1080@62.0.1858.1080" timestamp="1601623171963" />
-    <state x="525" y="172" key="SettingsEditor" timestamp="1601953431925">
+    <state x="622" y="131" key="SettingsEditor" timestamp="1601962726752">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state x="525" y="172" key="SettingsEditor/62.0.1858.1080@62.0.1858.1080" timestamp="1601953431925" />
+    <state x="622" y="131" key="SettingsEditor/62.0.1858.1080@62.0.1858.1080" timestamp="1601962726752" />
     <state x="654" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1601317189466">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>

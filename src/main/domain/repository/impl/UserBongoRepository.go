@@ -14,6 +14,10 @@ var appConfigChannel = channels.GetAppConfigChannel()
 type UserBongoRepository struct {
 }
 
+func (u *UserBongoRepository) FindUserByUid(uid string) (*entity.UserEntity, error) {
+	panic("implement me")
+}
+
 func NewUserBongoRepository() repository.IUserRepository {
 	return &UserBongoRepository{}
 }

@@ -28,26 +28,45 @@ func main() {
 
 	// Routes
 	app.GET("/", rest.Hello)
-	homeRouting(app)
-	userRouting(app)
+	homeRouting(app, "/test")
+	authRouting(app, "/auth")
+	userRouting(app, "/user")
 
 	// Middleware
 	app.Use(middleware.Logger())
 	app.Use(middleware.Recover())
 
-
 	// Start server
 	app.Logger.Fatal(app.Start(fmt.Sprintf(":%s", serverPort)))
 }
 
-func homeRouting(homeRouter *echo.Echo) {
-	homeRouter.GET("/page", rest.HomePage)
-	homeRouter.GET("/page/json", rest.JsonResponseSample)
-	homeRouter.GET("/test/user", rest.UserRetrieve)
+func homeRouting(app *echo.Echo, routerString string) {
+	homeGroup := app.Group(routerString)
+
+	// Methods
+	homeGroup.GET("/", rest.HomePage)
+	homeGroup.GET("/json", rest.JsonResponseSample)
+	homeGroup.GET("/user-test", rest.UserRetrieve)
 }
-func userRouting(userRouter *echo.Echo) {
-	userRouter.POST("/user/login", rest.Login, midlewares.GetBeanMiddlewareProcess)
-	userRouter.POST("/user/signup", rest.SignUp, midlewares.GetBeanMiddlewareProcess)
+func authRouting(app *echo.Echo, routerString string) {
+	authGroup := app.Group(routerString)
+	authGroup.Use(midlewares.GetBeanMiddlewareProcess)
+
+	// Methods
+	authGroup.POST("/login", rest.Login)
+	authGroup.POST("/signup", rest.SignUp)
+}
+func userRouting(app *echo.Echo, routerString string) {
+	userGroup := app.Group(routerString)
+	userGroup.Use(midlewares.GetBeanMiddlewareProcess, middleware.JWTWithConfig(middleware.JWTConfig{
+		SigningKey:  []byte(os.Getenv("AUTH_SECRET")),
+		TokenLookup: "header:Authorization",
+		ContextKey:  "uid",
+		AuthScheme:  "Bearer",
+	}))
+
+	// Methods
+	userGroup.GET("/user-info/:uid", rest.UserInfo)
 }
 
 func getEnvFile() string {

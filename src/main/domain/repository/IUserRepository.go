@@ -5,6 +5,7 @@ import (
 )
 
 type IUserRepository interface {
+	FindUserByUid(uid string) (*entity.UserEntity, error)
 	FindUserByEmailOrDisplayName(emailOrDisplayName string) (*entity.UserEntity, error)
 	InsertUser(userEntity *entity.UserEntity) (*entity.UserEntity, error)
 	UpdateUser(userEntity *entity.UserEntity) (*entity.UserEntity, error)
