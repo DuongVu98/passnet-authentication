@@ -17,7 +17,7 @@ func NewUserLoginInteractor(emailOrDisplayName string, password string) *UserLog
 	return &UserLoginInteractor{EmailOrDisplayName: emailOrDisplayName, Password: password}
 }
 
-func (interactor *UserLoginInteractor) Execute() (*dto.UserDto, error) {
+func (interactor *UserLoginInteractor) Execute() (*dto.UserTokenDto, error) {
 	userEntity, err := interactor.UserRepository.FindUserByEmailOrDisplayName(interactor.EmailOrDisplayName)
 	if err != nil {
 		return nil, errors.New("invalid username or password")
@@ -37,7 +37,18 @@ func (interactor *UserLoginInteractor) Execute() (*dto.UserDto, error) {
 			SetEmail(userEntity.Email).
 			SetDisplayName(userEntity.DisplayName).
 			Build()
-		return userDto, nil
+
+		// Gen token
+		signedToken, jwtErr := services.GenerateJwt(userDto)
+		if jwtErr != nil {
+			return nil, jwtErr
+		}
+		userTokenDto := dto.NewUserTokenDtoBuilder().
+			SetUserDto(userDto).
+			SetToken(signedToken).
+			Build()
+
+		return userTokenDto, nil
 	} else {
 		return nil, errors.New("invalid username or password")
 	}

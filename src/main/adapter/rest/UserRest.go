@@ -27,13 +27,13 @@ func Login(c echo.Context) (err error) {
 	beanConfig := <-beanConfigChannel
 	loginInteractor := interactors.NewUserLoginInteractor(loginRequest.EmailOrDisplayName, loginRequest.Password)
 	loginInteractor.UserRepository = beanConfig.(*models2.BeanConfig).UserRepository
-	userDto, err := loginInteractor.Execute()
+	userTokenDto, err := loginInteractor.Execute()
 	if err != nil {
 		log.Print("err 1")
 		return c.JSON(http.StatusOK, models.NewException(err.Error()))
 	}
 
-	return c.JSON(http.StatusOK, userDto)
+	return c.JSON(http.StatusOK, userTokenDto)
 }
 
 func SignUp(c echo.Context) (err error) {

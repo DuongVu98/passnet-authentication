@@ -26,5 +26,9 @@ func (u UserTokenDto) Build() *UserTokenDto {
 	return &u
 }
 
+func NewUserTokenDtoBuilder() UserTokenDtoBuilder {
+	return &UserTokenDto{}
+}
+
 
 
