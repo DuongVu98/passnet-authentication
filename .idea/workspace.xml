@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c5caf5db-600f-43d0-a4bf-20509778db99" name="Default Changelist" comment="" />
+    <list default="true" id="c5caf5db-600f-43d0-a4bf-20509778db99" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/usecases/interactors/UserLoginInteractor.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/usecases/interactors/UserLoginInteractor.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,7 +38,7 @@
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Golang/projects/echodemo" />
-    <property name="settings.editor.selected.configurable" value="AtomConfig" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -112,10 +115,10 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state width="1815" height="288" key="GridCell.Tab.0.right/62.0.1858.1080@62.0.1858.1080" timestamp="1601623171963" />
-    <state x="492" y="185" key="SettingsEditor" timestamp="1600915674208">
+    <state x="525" y="172" key="SettingsEditor" timestamp="1601953431925">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state x="492" y="185" key="SettingsEditor/62.0.1858.1080@62.0.1858.1080" timestamp="1600915674208" />
+    <state x="525" y="172" key="SettingsEditor/62.0.1858.1080@62.0.1858.1080" timestamp="1601953431925" />
     <state x="654" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1601317189466">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>

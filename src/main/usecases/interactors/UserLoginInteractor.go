@@ -13,10 +13,6 @@ type UserLoginInteractor struct {
 	UserRepository     repository.IUserRepository
 }
 
-func UserLoginInteractorWireBeans(userRepository repository.IUserRepository) *UserLoginInteractor {
-	return &UserLoginInteractor{UserRepository: userRepository}
-}
-
 func NewUserLoginInteractor(emailOrDisplayName string, password string) *UserLoginInteractor {
 	return &UserLoginInteractor{EmailOrDisplayName: emailOrDisplayName, Password: password}
 }
