@@ -60,10 +60,10 @@ func userRouting(app *echo.Echo, routerString string) {
 	userGroup := app.Group(routerString)
 	userGroup.Use(midlewares.GetBeanMiddlewareProcess, middleware.JWTWithConfig(middleware.JWTConfig{
 		SigningKey:  []byte(os.Getenv("AUTH_SECRET")),
-		TokenLookup: "header:Authorization",
-		ContextKey:  "uid",
-		AuthScheme:  "Bearer",
-	}))
+		TokenLookup: os.Getenv("AUTH_TOKEN_LOOKUP"),
+		ContextKey:  os.Getenv("AUTH_CONTEXT_KEY"),
+		AuthScheme:  os.Getenv("AUTH_SCHEME"),
+	}), middleware.KeyAuth(midlewares.CheckUserExistMiddleware))
 
 	// Methods
 	userGroup.GET("/user-info/:uid", rest.UserInfo)
