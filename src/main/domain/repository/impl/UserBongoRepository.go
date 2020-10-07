@@ -3,14 +3,15 @@ package impl
 import (
 	"errors"
 	"github.com/DuongVu98/passnet-authentication/src/main/domain/channels"
-	"github.com/DuongVu98/passnet-authentication/src/main/domain/entity"
 	"github.com/DuongVu98/passnet-authentication/src/main/domain/config"
+	"github.com/DuongVu98/passnet-authentication/src/main/domain/entity"
 	"github.com/DuongVu98/passnet-authentication/src/main/domain/repository"
 	"gopkg.in/mgo.v2/bson"
 	"log"
 )
 
 var appConfigChannel = channels.GetAppConfigChannel()
+
 type UserBongoRepository struct {
 }
 
@@ -61,6 +62,6 @@ func (u *UserBongoRepository) UpdateUser(userEntity *entity.UserEntity) (*entity
 	panic("implement me")
 }
 
-func (u *UserBongoRepository) LogTest(message string)  {
+func (u *UserBongoRepository) LogTest(message string) {
 	panic(message)
 }
