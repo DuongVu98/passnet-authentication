@@ -1,12 +1,17 @@
 version: '3'
 tasks:
-  set-os-vars:
+  get-plugins:
     cmds:
       - GOBIN="$PWD/bin" go install -i github.com/twitchtv/retool
       - GOBIN="$PWD/bin" go install -i github.com/google/wire/cmd/wire
+      - GOBIN="$PWD/bin" go install -i github.com/golang/protobuf/protoc-gen-go
+      - GOBIN="$PWD/bin" go install -i google.golang.org/grpc/cmd/protoc-gen-go-grpc
   run-dev:
     cmds:
       - ENV=development go run src/main/main.go
   run-prod:
     cmds:
       - ENV=production go run src/main/main.go
+  gen-proto:
+    cmds:
+      - ./bin/protoc-gen-go.exe
