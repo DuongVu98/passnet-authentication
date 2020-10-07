@@ -14,5 +14,6 @@ require (
 	github.com/smartystreets/goconvey v1.6.4 // indirect
 	go.mongodb.org/mongo-driver v1.3.4
 	google.golang.org/api v0.17.0
+	google.golang.org/grpc v1.32.0 // indirect
 	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
 )
