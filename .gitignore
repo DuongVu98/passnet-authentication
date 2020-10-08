@@ -1,7 +1,7 @@
 /.vagrant
 /firebase-key
 /bin
-
+/src/main/gen
 **.log
 
 # Created by https://www.toptal.com/developers/gitignore/api/go,jetbrains
