@@ -1,7 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5caf5db-600f-43d0-a4bf-20509778db99" name="Default Changelist" comment="" />
+    <list default="true" id="c5caf5db-600f-43d0-a4bf-20509778db99" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Taskfile.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Taskfile.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/adapter/midlewares/CheckUserExistMiddleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/adapter/midlewares/CheckUserExistMiddleware.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/adapter/midlewares/GetBeanMiddleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/adapter/midlewares/GetBeanMiddleware.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/adapter/models/Exception.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/adapter/models/Exception.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/adapter/models/UserLoginRequest.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/adapter/models/UserLoginRequest.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/adapter/models/UserSignUpRequest.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/adapter/models/UserSignUpRequest.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/adapter/rest/AuthRest.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/adapter/rest/AuthRest.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/adapter/rest/HomeRest.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/adapter/rest/HomeRest.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/adapter/rest/UserRest.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/adapter/rest/UserRest.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/config/AppConfig.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/config/AppConfig.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/config/app/GrpcConfig.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/config/app/GrpcConfig.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/config/app/MainConfig.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/config/app/MainConfig.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/config/bean/BeanConfig.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/config/bean/BeanConfig.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/config/handles/ChannelHandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/config/handles/ChannelHandler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/config/handles/PushRequestChannel.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/config/handles/PushRequestChannel.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/domain/channels/AppChannels.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/domain/channels/AppChannels.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/domain/config/Intances.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/domain/config/Intances.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/domain/dto/UserDto.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/domain/dto/UserDto.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/domain/dto/UserTokenDto.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/domain/dto/UserTokenDto.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/domain/entity/UserEntity.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/domain/entity/UserEntity.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/domain/repository/IUserRepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/domain/repository/IUserRepository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/domain/repository/impl/UserBongoRepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/domain/repository/impl/UserBongoRepository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/domain/repository/impl/UserMgmRepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/domain/repository/impl/UserMgmRepository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/domain/repository/impl/UserMgoRepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/domain/repository/impl/UserMgoRepository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/usecases/interactors/GetUserInfoInteractor.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/usecases/interactors/GetUserInfoInteractor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/usecases/interactors/UserLoginInteractor.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/usecases/interactors/UserLoginInteractor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/usecases/interactors/UserSignUpInteractor.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/usecases/interactors/UserSignUpInteractor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/usecases/services/JwtService.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/usecases/services/JwtService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/usecases/services/PasswordEncryptService.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/go/usecases/services/PasswordEncryptService.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,11 +91,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Workspace\Projects\Passnet\passnet-authentication\src\main\go" />
       <recent name="C:\Workspace\Projects\Passnet\passnet-authentication\src\main\domain" />
       <recent name="C:\Workspace\Projects\Passnet\passnet-authentication\src\main\domain\repository\impl" />
       <recent name="C:\Workspace\Projects\Passnet\passnet-authentication\src\main\config\bean" />
       <recent name="C:\Workspace\Projects\Passnet\passnet-authentication\src\main\config" />
-      <recent name="C:\Workspace\Projects\Passnet\passnet-authentication\src\main\config\config" />
     </key>
   </component>
   <component name="RunManager">
@@ -75,6 +127,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
