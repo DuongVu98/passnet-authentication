@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c5caf5db-600f-43d0-a4bf-20509778db99" name="Default Changelist" comment="" />
+    <list default="true" id="c5caf5db-600f-43d0-a4bf-20509778db99" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env.vagrant" beforeDir="false" afterPath="$PROJECT_DIR$/.env.vagrant" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/config/app/MainConfig.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/config/app/MainConfig.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,7 +39,7 @@
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Golang/projects/echodemo" />
-    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -84,10 +88,10 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="783" y="198" key="#GOPATH/62.0.1858.1080@62.0.1858.1080" timestamp="1600915352155" />
-    <state x="754" y="330" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600927942603">
+    <state x="754" y="330" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602064927051">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state x="754" y="330" key="#com.intellij.fileTypes.FileTypeChooser/62.0.1858.1080@62.0.1858.1080" timestamp="1600927942603" />
+    <state x="754" y="330" key="#com.intellij.fileTypes.FileTypeChooser/62.0.1858.1080@62.0.1858.1080" timestamp="1602064927051" />
     <state x="796" y="256" key="#com.intellij.ide.util.MemberChooser" timestamp="1601962840667">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
@@ -112,10 +116,10 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state width="1815" height="288" key="GridCell.Tab.0.right/62.0.1858.1080@62.0.1858.1080" timestamp="1601623171963" />
-    <state x="622" y="131" key="SettingsEditor" timestamp="1601962726752">
+    <state x="622" y="131" key="SettingsEditor" timestamp="1602063544610">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state x="622" y="131" key="SettingsEditor/62.0.1858.1080@62.0.1858.1080" timestamp="1601962726752" />
+    <state x="622" y="131" key="SettingsEditor/62.0.1858.1080@62.0.1858.1080" timestamp="1602063544610" />
     <state x="654" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1601317189466">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>

@@ -73,6 +73,8 @@ func getEnvFile() string {
 	env := os.Getenv("ENV")
 	if env == "development" {
 		return ".env.dev"
+	} else if env == "vagrant" {
+		return ".env.vagrant"
 	} else if env == "production" {
 		return ".env.prod"
 	}

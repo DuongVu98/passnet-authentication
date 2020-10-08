@@ -59,9 +59,9 @@ func mgoClient() *mgo.Session {
 }
 
 func SetMgmClient() {
-	dbHost := fmt.Sprintf("mongodb://%s", os.Getenv("DB_HOST"))
+	dbURI := fmt.Sprintf("mongodb://%s:%s@%s:27017", os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_HOST"))
 	dbName := os.Getenv("DB_NAME")
-	err := mgm.SetDefaultConfig(nil, dbName, options.Client().ApplyURI(dbHost))
+	err := mgm.SetDefaultConfig(nil, dbName, options.Client().ApplyURI(dbURI))
 	if err != nil {
 		log.Fatalf("error when connecting to database --> %s", err.Error())
 	}

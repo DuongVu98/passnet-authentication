@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package mypkg;
+
+message MyMessage {
+    string body = 1;
+}
+
+service ExampleService {
+    rpc SayHello(MyMessage) returns (MyMessage) {}
+}

@@ -23,4 +23,6 @@ func RunAppConfig() {
 	bean.BeanConfigInstance.UserRepository = app.GetUserMgmRepository()
 	// Global config
 	app.SetMgmClient()
+
+	go app.GrpcConfig()
 }

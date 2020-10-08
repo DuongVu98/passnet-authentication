@@ -1,1 +1,1 @@
-$env:Path += "$PWD\bin"
+$PATH = $env:PATH
