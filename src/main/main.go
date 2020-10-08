@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/DuongVu98/passnet-authentication/src/main/adapter/midlewares"
-	"github.com/DuongVu98/passnet-authentication/src/main/adapter/rest"
-	"github.com/DuongVu98/passnet-authentication/src/main/config"
+	"github.com/DuongVu98/passnet-authentication/src/main/go/adapter/midlewares"
+	"github.com/DuongVu98/passnet-authentication/src/main/go/adapter/rest"
+	"github.com/DuongVu98/passnet-authentication/src/main/go/config"
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"

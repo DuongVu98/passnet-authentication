@@ -15,4 +15,5 @@ tasks:
       - ENV=production go run src/main/main.go
   gen-proto:
     cmds:
-      - protoc-gen-go --go_out=grpc:mypkg src/main/proto/example.proto
+      - rm -r src/main/gen/**
+      - protoc --go_out=src/main/gen src/main/proto/*.proto
