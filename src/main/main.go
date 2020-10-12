@@ -47,6 +47,7 @@ func homeRouting(app *echo.Echo, routerString string) {
 	homeGroup.GET("/", rest.HomePage)
 	homeGroup.GET("/json", rest.JsonResponseSample)
 	homeGroup.GET("/user-test", rest.UserRetrieve)
+	homeGroup.GET("/test-grpc", rest.TestGrpcMessage)
 }
 func authRouting(app *echo.Echo, routerString string) {
 	authGroup := app.Group(routerString)

@@ -2,6 +2,8 @@ package rest
 
 import (
 	"context"
+	"github.com/DuongVu98/passnet-authentication/src/main/go/adapter/gateway"
+	"github.com/DuongVu98/passnet-authentication/src/main/go/adapter/models"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/channels"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/config"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/dto"
@@ -14,7 +16,7 @@ import (
 //var firebaseApp = testConfig.FirebaseApp
 
 var appConfigChannel = channels.GetAppConfigChannel()
-
+var messageGateway = gateway.NewMessageGateway()
 
 func Hello(c echo.Context) error {
 	return c.String(http.StatusOK, "Hello, World!")
@@ -50,4 +52,10 @@ func UserRetrieve(echoContext echo.Context) (err error) {
 		Build()
 
 	return echoContext.JSON(http.StatusOK, userDto)
+}
+
+func TestGrpcMessage(echoContext echo.Context) (err error) {
+	message := &models.CreateUserMessage{Uid: "hello uid"}
+	messageGateway.SendMessage(message)
+	return echoContext.String(http.StatusOK, "sent")
 }

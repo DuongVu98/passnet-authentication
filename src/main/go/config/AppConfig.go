@@ -11,6 +11,7 @@ import (
 func RunAppConfig() {
 	//bean.GetBeanContainer()
 	handles.ChannelHandler()
+	handles.RunAllGrpcChannelProcesses()
 
 	//Push config to channel
 	appConfigIntance := app.GetAppConfigInstance()
