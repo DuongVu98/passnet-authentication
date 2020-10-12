@@ -4,6 +4,7 @@ import (
 	"context"
 	firebase "firebase.google.com/go/v4"
 	"fmt"
+	myproto "github.com/DuongVu98/passnet-authentication/src/main/gen/src/main/proto"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/config"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/repository"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/repository/impl"
@@ -16,8 +17,8 @@ import (
 	"os"
 )
 
-func NewAppConfig(firebaseApp firebase.App, bongoClient *bongo.Connection, mgoClient *mgo.Session) *config.AppConfig {
-	return &config.AppConfig{FirebaseApp: firebaseApp, BongoClient: bongoClient, MgoClient: mgoClient}
+func NewAppConfig(firebaseApp firebase.App, bongoClient *bongo.Connection, mgoClient *mgo.Session, sagaMessageClient myproto.MessageServiceClient) *config.AppConfig {
+	return &config.AppConfig{FirebaseApp: firebaseApp, BongoClient: bongoClient, MgoClient: mgoClient, MessageServiceClient: sagaMessageClient}
 }
 
 func getFirebaseServiceAccount() firebase.App {
@@ -70,7 +71,7 @@ func SetMgmClient() {
 func GetUserMgmRepository() repository.IUserRepository {
 	return impl.NewUserMgmRepository()
 }
-var appConfigIntance = NewAppConfig(getFirebaseServiceAccount(), bongoClient(), nil)
+var appConfigIntance = NewAppConfig(getFirebaseServiceAccount(), bongoClient(), nil, GetSagaMessageGrpcClient())
 func GetAppConfigInstance() *config.AppConfig {
 	return appConfigIntance
 }
