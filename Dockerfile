@@ -4,6 +4,7 @@ COPY . .
 RUN go build -o ./dist/main src/main/main.go
 
 FROM alpine:latest
+ENV ENV=vagrant
 WORKDIR /app
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/env ./env
