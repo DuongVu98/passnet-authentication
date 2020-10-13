@@ -9,7 +9,6 @@ import (
 
 
 func RunAppConfig() {
-	//bean.GetBeanContainer()
 	handles.ChannelHandler()
 	handles.RunAllGrpcChannelProcesses()
 

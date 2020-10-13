@@ -10,7 +10,7 @@ import (
 )
 
 func GrpcConfig() {
-	grpcPort := os.Getenv("GRPC_SERVER_PORT")
+	grpcPort := os.Getenv("GRPC_PORT")
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%s", grpcPort))
 	log.Printf("before grpc listen")
 	if err != nil {
@@ -26,11 +26,11 @@ func GrpcConfig() {
 
 func GetSagaMessageGrpcClient() myproto.MessageServiceClient {
 	var conn *grpc.ClientConn
-	conn, err := grpc.Dial(":9000", grpc.WithInsecure())
+	sagaHost := os.Getenv("GRPC_SAGA_HOST")
+	sagaPort := os.Getenv("GRPC_SAGA_PORT")
+	conn, err := grpc.Dial(fmt.Sprintf("%s:%s", sagaHost, sagaPort), grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("could not connect to saga server: %s", err)
 	}
-	defer conn.Close()
-
 	return myproto.NewMessageServiceClient(conn)
 }

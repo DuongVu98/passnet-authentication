@@ -21,7 +21,11 @@ func ProcessMessage() {
 	case reflect.TypeOf(&models.CreateUserMessage{}).String():
 		log.Printf("Create User!!")
 		messageToSend := &proto.CreateUserMessage{Uid: message.(*models.CreateUserMessage).Uid}
-		_, _ = sagaMessageClient.SendCreateUserMessage(context.Background(), messageToSend)
+		response, err := sagaMessageClient.SendCreateUserMessage(context.Background(), messageToSend)
+		if err != nil {
+			log.Printf("err during client call grpc %v", err)
+		}
+		log.Printf("message from grpc server %s", response.Message)
 	}
 }
 
