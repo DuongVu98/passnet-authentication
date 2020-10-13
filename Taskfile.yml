@@ -23,4 +23,7 @@ tasks:
       - protoc --go_out=plugins=grpc:src/main/gen src/main/proto/*.proto
   build:
     cmds:
-      - go build src/main/main.go
+      - ENV=vagrant go build src/main/main.go
+  run-build:
+    cmds:
+      - ENV=vagrant ./main
