@@ -3,7 +3,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.network "private_network", ip: "192.168.33.10"
 
-  config.vm.synced_folder ".", "/vagrant/passnet-auth"
+  config.vm.synced_folder ".", "/vagrant/passnet-auth", id: "app"
+  config.vm.synced_folder "../sagas/v1/saga-authentication", "/vagrant/saga", id: "saga"
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = true
