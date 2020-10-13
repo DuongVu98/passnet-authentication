@@ -13,7 +13,17 @@ tasks:
   run-prod:
     cmds:
       - ENV=production go run src/main/main.go
+  first-gen-proto:
+    cmds:
+      - mkdir src/main/gen
+      - protoc --go_out=plugins=grpc:src/main/gen src/main/proto/*.proto
   gen-proto:
     cmds:
-      - rm -r src/main/gen/**
-      - protoc --go_out=src/main/gen src/main/proto/*.proto
+      - rm -rf src/main/gen/*
+      - protoc --go_out=plugins=grpc:src/main/gen src/main/proto/*.proto
+  build:
+    cmds:
+      - ENV=vagrant go build src/main/main.go
+  run-build:
+    cmds:
+      - ENV=vagrant ./main

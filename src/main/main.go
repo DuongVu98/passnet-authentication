@@ -17,7 +17,9 @@ func main() {
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
+
 	serverPort := os.Getenv("SERVER_PORT")
+	log.Printf("serverPort: %v", serverPort)
 
 	app := echo.New()
 
@@ -46,7 +48,6 @@ func homeRouting(app *echo.Echo, routerString string) {
 	// Methods
 	homeGroup.GET("/", rest.HomePage)
 	homeGroup.GET("/json", rest.JsonResponseSample)
-	homeGroup.GET("/user-test", rest.UserRetrieve)
 	homeGroup.GET("/test-grpc", rest.TestGrpcMessage)
 }
 func authRouting(app *echo.Echo, routerString string) {
@@ -71,13 +72,14 @@ func userRouting(app *echo.Echo, routerString string) {
 }
 
 func getEnvFile() string {
+	envFolder := "env/"
 	env := os.Getenv("ENV")
 	if env == "development" {
-		return ".env.dev"
+		return fmt.Sprintf("%v.env.dev", envFolder)
 	} else if env == "vagrant" {
-		return ".env.vagrant"
+		return fmt.Sprintf("%v.env.vagrant", envFolder)
 	} else if env == "production" {
-		return ".env.prod"
+		return fmt.Sprintf("%v.env.prod", envFolder)
 	}
 	return ""
 }
