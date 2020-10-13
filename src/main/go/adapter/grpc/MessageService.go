@@ -20,7 +20,8 @@ func ProcessMessage() {
 	switch reflect.TypeOf(message).String() {
 	case reflect.TypeOf(&models.CreateUserMessage{}).String():
 		log.Printf("Create User!!")
-		_, _ = sagaMessageClient.SendCreateUserMessage(context.Background(), &proto.CreateUserMessage{Uid: message.(*models.CreateUserMessage).Uid})
+		messageToSend := &proto.CreateUserMessage{Uid: message.(*models.CreateUserMessage).Uid}
+		_, _ = sagaMessageClient.SendCreateUserMessage(context.Background(), messageToSend)
 	}
 }
 
