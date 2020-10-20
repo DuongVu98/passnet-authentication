@@ -4,18 +4,19 @@ import (
 	"context"
 	"github.com/DuongVu98/passnet-authentication/src/main/gen/src/main/proto"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/adapter/models"
-	"github.com/DuongVu98/passnet-authentication/src/main/go/config/app"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/channels"
+	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/config"
 	"log"
 	"reflect"
 )
 
-var grpcChannel = channels.GetGrpcChannel()
-
-var appConfig = app.GetAppConfigInstance()
-var sagaMessageClient = appConfig.MessageServiceClient
 
 func ProcessMessage() {
+	var grpcChannel = channels.GetGrpcChannel()
+	var singletonFactory = config.GetSingletonFactory()
+	var appConfig = singletonFactory.Get("appConfig").(*config.AppConfig)
+	var sagaMessageClient = appConfig.MessageServiceClient
+
 	message := <-grpcChannel
 	switch reflect.TypeOf(message).String() {
 	case reflect.TypeOf(&models.CreateUserMessage{}).String():

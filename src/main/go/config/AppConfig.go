@@ -10,8 +10,6 @@ import (
 
 
 func RunAppConfig() {
-	handles.ChannelHandler()
-	handles.RunAllGrpcChannelProcesses()
 
 	//Push config to channel
 	appConfigIntance := app.GetAppConfigInstance()
@@ -22,6 +20,9 @@ func RunAppConfig() {
 	go func() {
 		appConfigChannel <- appConfigIntance
 	}()
+
+	handles.ChannelHandler()
+	handles.RunAllGrpcChannelProcesses()
 
 	//Bean config
 	bean.BeanConfigInstance.UserRepository = app.GetUserMgmRepository()

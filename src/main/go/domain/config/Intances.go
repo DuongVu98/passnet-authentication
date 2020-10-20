@@ -3,6 +3,7 @@ package config
 import (
 	myproto "github.com/DuongVu98/passnet-authentication/src/main/gen/src/main/proto"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/repository"
+	"log"
 )
 
 type (
@@ -13,22 +14,24 @@ type (
 		UserRepository repository.IUserRepository
 	}
 	SingletonFactory struct {
-		Factory map[string]interface{}
+		factory map[string]interface{}
 	}
 )
 
 func (s *SingletonFactory) Set(key string, value interface{}) {
-	s.Factory[key] = value
+	log.Printf("set appconfig")
+	s.factory[key] = value
 }
 func (s *SingletonFactory) Get (key string) interface{} {
-	return s.Factory[key]
+	log.Printf("get appconfig")
+	return s.factory[key]
 }
 
 /*
 Create instance
  */
 var singletonFactory = &SingletonFactory{
-	Factory: make(map[string]interface{}),
+	factory: make(map[string]interface{}),
 }
 func GetSingletonFactory() *SingletonFactory {
 	return singletonFactory
