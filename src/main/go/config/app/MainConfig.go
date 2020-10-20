@@ -29,8 +29,8 @@ func GetUserMgmRepository() repository.IUserRepository {
 	return impl.NewUserMgmRepository()
 }
 
-var appConfigIntance = NewAppConfig(GetSagaMessageGrpcClient())
+var appConfigInstance = NewAppConfig(GetSagaMessageGrpcClient())
 
 func GetAppConfigInstance() *config.AppConfig {
-	return appConfigIntance
+	return appConfigInstance
 }
