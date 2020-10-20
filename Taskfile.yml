@@ -1,5 +1,8 @@
 version: '3'
 tasks:
+  set-env:
+    cmds:
+      - export PATH=$PATH:/usr/local/go/bin
   get-plugins:
     cmds:
       - go get github.com/golang/protobuf/protoc-gen-go
