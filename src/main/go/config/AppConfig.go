@@ -10,15 +10,15 @@ import (
 
 
 func RunAppConfig() {
+	singletonFactory := config.GetSingletonFactory()
 
 	//Push config to channel
-	appConfigIntance := app.GetAppConfigInstance()
-	singletonFactory := config.GetSingletonFactory()
-	singletonFactory.Set("appConfig", appConfigIntance)
+	appConfigInstance := app.GetAppConfigInstance()
+	singletonFactory.Set("appConfig", appConfigInstance)
 
 	appConfigChannel := channels.GetAppConfigChannel()
 	go func() {
-		appConfigChannel <- appConfigIntance
+		appConfigChannel <- appConfigInstance
 	}()
 
 	handles.ChannelHandler()
