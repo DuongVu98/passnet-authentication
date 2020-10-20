@@ -12,6 +12,3 @@ var BeanConfigInstance = NewBeanConfigInstance()
 func GetBeanConfigInstance() *config.BeanConfig {
 	return BeanConfigInstance
 }
-
-
-
