@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/adapter/models"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/channels"
-	models2 "github.com/DuongVu98/passnet-authentication/src/main/go/domain/config"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/usecases/interactors"
 	"github.com/labstack/echo/v4"
 	"log"
@@ -24,9 +23,7 @@ func Login(c echo.Context) (err error) {
 		SetPassword(fmt.Sprintf("%v", m["password"])).
 		Build()
 
-	beanConfig := <-beanConfigChannel
 	loginInteractor := interactors.NewUserLoginInteractor(loginRequest.EmailOrDisplayName, loginRequest.Password)
-	loginInteractor.UserRepository = beanConfig.(*models2.BeanConfig).UserRepository
 	userTokenDto, err := loginInteractor.Execute()
 	if err != nil {
 		log.Print("err 1")
@@ -47,9 +44,7 @@ func SignUp(c echo.Context) (err error) {
 		SetPassword(fmt.Sprintf("%v", m["password"])).
 		Build()
 
-	beanConfig := <-beanConfigChannel
 	signUpInteractor := interactors.NewUserSignUpInteractor(signUpRequest.Email, signUpRequest.Password)
-	signUpInteractor.UserRepository = beanConfig.(*models2.BeanConfig).UserRepository
 	userSignedUpDto, err1 := signUpInteractor.Execute()
 	if err1 != nil {
 		return c.JSON(http.StatusOK, models.NewException(err1.Error()))
