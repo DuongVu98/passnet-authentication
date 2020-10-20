@@ -52,7 +52,6 @@ func homeRouting(app *echo.Echo, routerString string) {
 }
 func authRouting(app *echo.Echo, routerString string) {
 	authGroup := app.Group(routerString)
-	authGroup.Use(midlewares.GetBeanMiddlewareProcess)
 
 	// Methods
 	authGroup.POST("/login", rest.Login)

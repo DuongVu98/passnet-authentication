@@ -1,13 +1,11 @@
 package midlewares
 
 import (
-	"github.com/DuongVu98/passnet-authentication/src/main/go/config/handles"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/channels"
 	models2 "github.com/DuongVu98/passnet-authentication/src/main/go/domain/config"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo/v4"
 	"os"
-	"reflect"
 )
 
 var beanConfigChannel = channels.GetBeanConfigChannel()
@@ -17,9 +15,8 @@ func CheckUserExistMiddleware(key string, c echo.Context) (bool, error) {
 	claims := user.Claims.(jwt.MapClaims)
 	key = claims["uid"].(string)
 
-	handles.Push(reflect.TypeOf(handles.GetBeanRequest{}))
-	beanConfig := <-beanConfigChannel
-	userRepository := beanConfig.(*models2.BeanConfig).UserRepository
+	beanConfig := models2.GetSingletonFactory().Get("beanConfig").(*models2.BeanConfig)
+	userRepository := beanConfig.UserRepository
 
 	_, repoErr := userRepository.FindUserByUid(key)
 	if repoErr != nil {
