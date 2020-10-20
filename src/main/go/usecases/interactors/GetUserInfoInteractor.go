@@ -1,6 +1,7 @@
 package interactors
 
 import (
+	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/config"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/dto"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/repository"
 )
@@ -11,7 +12,8 @@ type GetUserInfoInteractor struct {
 }
 
 func NewGetUserInfoInteractor(requestUid string) *GetUserInfoInteractor {
-	return &GetUserInfoInteractor{RequestUid: requestUid}
+	beanConfig := config.GetSingletonFactory().Get("beanConfig").(*config.BeanConfig)
+	return &GetUserInfoInteractor{RequestUid: requestUid, UserRepository: beanConfig.UserRepository}
 }
 
 func (interactor *GetUserInfoInteractor) Execute() (*dto.UserDto, error) {

@@ -2,6 +2,7 @@ package interactors
 
 import (
 	"errors"
+	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/config"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/dto"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/repository"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/usecases/services"
@@ -14,7 +15,8 @@ type UserLoginInteractor struct {
 }
 
 func NewUserLoginInteractor(emailOrDisplayName string, password string) *UserLoginInteractor {
-	return &UserLoginInteractor{EmailOrDisplayName: emailOrDisplayName, Password: password}
+	beanConfig := config.GetSingletonFactory().Get("beanConfig").(*config.BeanConfig)
+	return &UserLoginInteractor{EmailOrDisplayName: emailOrDisplayName, Password: password, UserRepository: beanConfig.UserRepository}
 }
 
 func (interactor *UserLoginInteractor) Execute() (*dto.UserTokenDto, error) {

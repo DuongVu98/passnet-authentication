@@ -8,7 +8,7 @@ func NewBeanConfigInstance() *config.BeanConfig {
 	return &config.BeanConfig{}
 }
 
-var BeanConfigInstance = NewBeanConfigInstance()
+var beanConfigInstance = NewBeanConfigInstance()
 func GetBeanConfigInstance() *config.BeanConfig {
-	return BeanConfigInstance
+	return beanConfigInstance
 }

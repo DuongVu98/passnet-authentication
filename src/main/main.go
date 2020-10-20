@@ -60,7 +60,7 @@ func authRouting(app *echo.Echo, routerString string) {
 }
 func userRouting(app *echo.Echo, routerString string) {
 	userGroup := app.Group(routerString)
-	userGroup.Use(midlewares.GetBeanMiddlewareProcess, middleware.JWTWithConfig(middleware.JWTConfig{
+	userGroup.Use(middleware.JWTWithConfig(middleware.JWTConfig{
 		SigningKey:  []byte(os.Getenv("AUTH_SECRET")),
 		TokenLookup: os.Getenv("AUTH_TOKEN_LOOKUP"),
 		ContextKey:  os.Getenv("AUTH_CONTEXT_KEY"),

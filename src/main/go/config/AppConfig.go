@@ -2,10 +2,10 @@ package config
 
 import (
 	"github.com/DuongVu98/passnet-authentication/src/main/go/config/app"
+	"github.com/DuongVu98/passnet-authentication/src/main/go/config/bean"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/config/handles"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/channels"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/config"
-	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/config/bean"
 )
 
 
@@ -25,7 +25,9 @@ func RunAppConfig() {
 	handles.RunAllGrpcChannelProcesses()
 
 	//Bean config
-	bean.BeanConfigInstance.UserRepository = app.GetUserMgmRepository()
+	beanConfigInstance := bean.GetBeanConfigInstance()
+	beanConfigInstance.UserRepository = app.GetUserMgmRepository()
+	singletonFactory.Set("beanConfig", beanConfigInstance)
 	// Global config
 	app.SetMgmClient()
 
