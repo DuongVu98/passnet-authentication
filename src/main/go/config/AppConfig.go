@@ -2,9 +2,9 @@ package config
 
 import (
 	"github.com/DuongVu98/passnet-authentication/src/main/go/config/app"
-	"github.com/DuongVu98/passnet-authentication/src/main/go/config/bean"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/config/handles"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/channels"
+	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/config/bean"
 )
 
 

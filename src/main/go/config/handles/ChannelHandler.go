@@ -1,8 +1,8 @@
 package handles
 
 import (
-	"github.com/DuongVu98/passnet-authentication/src/main/go/config/bean"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/channels"
+	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/config/bean"
 )
 
 var sendBeanChannel = channels.GetSendBeanChannel()
