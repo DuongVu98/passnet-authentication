@@ -37,7 +37,9 @@ func main() {
 	// Middleware
 	app.Use(middleware.Logger())
 	app.Use(middleware.Recover())
-
+	app.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"*"},
+	}))
 	// Start server
 	app.Logger.Fatal(app.Start(fmt.Sprintf(":%s", serverPort)))
 }
