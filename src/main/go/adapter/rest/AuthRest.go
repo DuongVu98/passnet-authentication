@@ -14,9 +14,6 @@ var beanConfigChannel = channels.GetBeanConfigChannel()
 
 func Login(c echo.Context) (err error) {
 
-	//authHeader := c.Request().Header.Get("Authentication")
-	//log.Printf("authentication header --> %v", authHeader)
-
 	m := echo.Map{}
 	err = c.Bind(&m)
 	if err != nil {
