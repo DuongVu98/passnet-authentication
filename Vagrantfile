@@ -13,4 +13,5 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "set-env", type: "shell", inline: "export PATH=$PATH:/usr/local/go/bin", run: "always"
   config.vm.provision :docker
+  config.vm.provision :docker_compose, yml: "/vagrant/passnet-auth/docker-compose.prod.yml", run: "always"
 end
