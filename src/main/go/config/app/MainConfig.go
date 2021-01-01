@@ -17,7 +17,7 @@ func NewAppConfig(sagaMessageClient myproto.MessageServiceClient) *config.AppCon
 }
 
 func SetMgmClient() {
-	dbURI := fmt.Sprintf("mongodb://%s:%s@%s:%s", os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_HOST"), os.Getenv("DB_PORT"))
+	dbURI := fmt.Sprintf("mongodb://%s:%s@%s:%s/?authSource=admin", os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_HOST"), os.Getenv("DB_PORT"))
 	dbName := os.Getenv("DB_NAME")
 	err := mgm.SetDefaultConfig(nil, dbName, options.Client().ApplyURI(dbURI))
 	if err != nil {

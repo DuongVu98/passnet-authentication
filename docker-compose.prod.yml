@@ -25,7 +25,7 @@ services:
       - db
 
   db:
-    image: mongo
+    image: mongo:4.2.11-bionic
     container_name: passnet-auth-db
     environment:
       - MONGO_INITDB_DATABASE=passnet_auth
@@ -34,7 +34,8 @@ services:
     ports:
       - "27019:27017"
     volumes:
-      - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+#      - ./docker-entrypoint-initdb.d/mongo-volume:/data/db
     networks:
       mynetwork:
         ipv4_address: 172.20.0.11
