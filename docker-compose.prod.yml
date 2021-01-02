@@ -9,12 +9,7 @@ networks:
 
 services:
   server:
-#    image: passnet-auth:latest
-    build:
-      context: .
-      dockerfile: Dockerfile.prod
-      args:
-        ENV: production
+    image: tony16019/passnet-auth:latest
     container_name: passnet-auth-server
     networks:
       mynetwork:
@@ -31,11 +26,8 @@ services:
       - MONGO_INITDB_DATABASE=passnet_auth
       - MONGO_INITDB_ROOT_USERNAME=passnet-auth-app
       - MONGO_INITDB_ROOT_PASSWORD=tungduong98
-    ports:
-      - "27019:27017"
     volumes:
       - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
-#      - ./docker-entrypoint-initdb.d/mongo-volume:/data/db
     networks:
       mynetwork:
         ipv4_address: 172.20.0.11

@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  server:
+    image: tony16019/passnet-auth:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+      args:
+        ENV: production
