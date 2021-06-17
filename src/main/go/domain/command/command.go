@@ -1,9 +1,14 @@
 package command
 
-type RegisterCommand struct {
-	Username string
-	Email string
-	Password string
-	FirstName string
-	LastName string
-}
+type (
+	BaseCommand interface {
+	}
+	RegisterCommand struct {
+		Username  string
+		Email     string
+		Password  string
+		FirstName string
+		LastName  string
+		BaseCommand
+	}
+)

@@ -24,13 +24,11 @@ func GrpcConfig() {
 	}
 }
 
+var sagaHost = os.Getenv("GRPC_SAGA_HOST")
+var sagaPort = os.Getenv("GRPC_SAGA_PORT")
+var conn, _ = grpc.Dial(fmt.Sprintf("%s:%s", sagaHost, sagaPort), grpc.WithInsecure())
+var grpcClient = myproto.NewMessageServiceClient(conn)
+
 func GetSagaMessageGrpcClient() myproto.MessageServiceClient {
-	var conn *grpc.ClientConn
-	sagaHost := os.Getenv("GRPC_SAGA_HOST")
-	sagaPort := os.Getenv("GRPC_SAGA_PORT")
-	conn, err := grpc.Dial(fmt.Sprintf("%s:%s", sagaHost, sagaPort), grpc.WithInsecure())
-	if err != nil {
-		log.Fatalf("could not connect to saga server: %s", err)
-	}
-	return myproto.NewMessageServiceClient(conn)
+	return grpcClient
 }

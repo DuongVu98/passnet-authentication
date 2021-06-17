@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/DuongVu98/passnet-authentication/src/main/go/adapter/midlewares"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/adapter/rest"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/config"
 	"github.com/joho/godotenv"
@@ -32,7 +31,6 @@ func main() {
 	app.GET("/", rest.Hello)
 	homeRouting(app, "/test")
 	authRouting(app, "/auth")
-	userRouting(app, "/user")
 
 	// Middleware
 	app.Use(middleware.Logger())
@@ -54,23 +52,7 @@ func homeRouting(app *echo.Echo, routerString string) {
 }
 func authRouting(app *echo.Echo, routerString string) {
 	authGroup := app.Group(routerString)
-
-	// Methods
-	authGroup.POST("/login", rest.Login)
-	authGroup.POST("/signup", rest.SignUp)
 	authGroup.POST("/register", rest.Register)
-}
-func userRouting(app *echo.Echo, routerString string) {
-	userGroup := app.Group(routerString)
-	userGroup.Use(middleware.JWTWithConfig(middleware.JWTConfig{
-		SigningKey:  []byte(os.Getenv("AUTH_SECRET")),
-		TokenLookup: os.Getenv("AUTH_TOKEN_LOOKUP"),
-		ContextKey:  os.Getenv("AUTH_CONTEXT_KEY"),
-		AuthScheme:  os.Getenv("AUTH_SCHEME"),
-	}), middleware.KeyAuth(midlewares.CheckUserExistMiddleware))
-
-	// Methods
-	userGroup.GET("/user-info/:uid", rest.UserInfo)
 }
 
 func getEnvFile() string {

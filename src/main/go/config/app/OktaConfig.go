@@ -6,7 +6,7 @@ import (
 )
 
 var appContext = context.Background()
-var ctx, client, err = okta.NewClient(
+var ctx, client, _ = okta.NewClient(
 	appContext, okta.WithOrgUrl("https://dev-96211074.okta.com"),
 	okta.WithToken("00wO5vZ9392pZRdjAOgHQk_D6LbI3Q1Es1fkqpm7NN"),
 	okta.WithClientId("0oaw0f8g35USGAHtB5d6"),

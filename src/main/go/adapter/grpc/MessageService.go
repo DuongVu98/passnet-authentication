@@ -3,9 +3,9 @@ package grpc
 import (
 	"context"
 	"github.com/DuongVu98/passnet-authentication/src/main/gen/src/main/proto"
-	"github.com/DuongVu98/passnet-authentication/src/main/go/adapter/models"
+	"github.com/DuongVu98/passnet-authentication/src/main/go/config/app"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/channels"
-	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/config"
+	models2 "github.com/DuongVu98/passnet-authentication/src/main/go/domain/models"
 	"log"
 	"reflect"
 )
@@ -13,15 +13,13 @@ import (
 
 func ProcessMessage() {
 	var grpcChannel = channels.GetGrpcChannel()
-	var singletonFactory = config.GetSingletonFactory()
-	var appConfig = singletonFactory.Get("appConfig").(*config.AppConfig)
-	var sagaMessageClient = appConfig.MessageServiceClient
+	var sagaMessageClient = app.GetSagaMessageGrpcClient()
 
 	message := <-grpcChannel
 	switch reflect.TypeOf(message).String() {
-	case reflect.TypeOf(&models.CreateUserMessage{}).String():
+	case reflect.TypeOf(&models2.CreateUserMessage{}).String():
 		log.Printf("Create User!!")
-		messageToSend := &proto.CreateUserMessage{Uid: message.(*models.CreateUserMessage).Uid}
+		messageToSend := &proto.CreateUserMessage{Uid: message.(*models2.CreateUserMessage).Uid}
 		response, err := sagaMessageClient.SendCreateUserMessage(context.Background(), messageToSend)
 		if err != nil {
 			log.Printf("err during client call grpc %v", err)

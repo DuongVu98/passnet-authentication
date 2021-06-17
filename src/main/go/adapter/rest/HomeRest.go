@@ -2,7 +2,7 @@ package rest
 
 import (
 	"github.com/DuongVu98/passnet-authentication/src/main/go/adapter/gateway"
-	"github.com/DuongVu98/passnet-authentication/src/main/go/adapter/models"
+	models2 "github.com/DuongVu98/passnet-authentication/src/main/go/domain/models"
 	"github.com/labstack/echo/v4"
 	"net/http"
 )
@@ -24,7 +24,7 @@ func JsonResponseSample(c echo.Context) (err error) {
 }
 
 func TestGrpcMessage(echoContext echo.Context) (err error) {
-	message := &models.CreateUserMessage{Uid: "hello uid"}
+	message := &models2.CreateUserMessage{Uid: "hello uid"}
 	messageGateway.SendMessage(message)
 	return echoContext.String(http.StatusOK, "sent")
 }
