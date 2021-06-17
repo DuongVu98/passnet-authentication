@@ -28,7 +28,7 @@ func RunAppConfig() {
 	singletonFactory.Set("beanConfig", beanConfigInstance)
 
 	// Global config
-	app.SetMgmClient()
+	//app.SetMgmClient()
 
 	go app.GrpcConfig()
 }

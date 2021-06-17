@@ -58,6 +58,7 @@ func authRouting(app *echo.Echo, routerString string) {
 	// Methods
 	authGroup.POST("/login", rest.Login)
 	authGroup.POST("/signup", rest.SignUp)
+	authGroup.POST("/register", rest.Register)
 }
 func userRouting(app *echo.Echo, routerString string) {
 	userGroup := app.Group(routerString)
