@@ -1,10 +1,10 @@
 package executor
 
 import (
-	"github.com/DuongVu98/passnet-authentication/src/main/go/config/app"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/aggregate"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/command"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/event"
+	client2 "github.com/DuongVu98/passnet-authentication/src/main/go/usecases/client"
 	"reflect"
 )
 
@@ -23,7 +23,7 @@ func (step PublishEventStep) Execute(c command.BaseCommand) (aggregate.User, err
 				LastName: user.Profile.LastName,
 			}
 
-			var client = app.GetSagaClient()
+			var client = client2.GetSagaClient()
 			client.Send(eventToSend)
 			return user, nil
 		}

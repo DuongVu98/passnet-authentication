@@ -27,8 +27,7 @@ func GrpcConfig() {
 var sagaHost = os.Getenv("GRPC_SAGA_HOST")
 var sagaPort = os.Getenv("GRPC_SAGA_PORT")
 var conn, _ = grpc.Dial(fmt.Sprintf("%s:%s", sagaHost, sagaPort), grpc.WithInsecure())
-var grpcClient = myproto.NewMessageServiceClient(conn)
-
-func GetSagaMessageGrpcClient() myproto.MessageServiceClient {
+var grpcClient = myproto.NewEventProducerClient(conn)
+func GetSagaEventProducerClient() myproto.EventProducerClient {
 	return grpcClient
 }

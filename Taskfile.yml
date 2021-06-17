@@ -23,7 +23,8 @@ tasks:
   gen-proto:
     cmds:
       - rm -rf src/main/gen/*
-      - protoc --go_out=plugins=grpc:src/main/gen src/main/proto/*.proto
+      - protoc --go_out=src/main/gen --go-grpc_out=src/main/gen --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative src/main/proto/*.proto \
+        --go_opt=Msrc/main/proto/produce-event.proto=github.com/DuongVu98/passnet-authentication/src/main/gen
   build:
     cmds:
       - ENV=vagrant go build src/main/main.go

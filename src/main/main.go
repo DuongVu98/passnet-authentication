@@ -28,8 +28,6 @@ func main() {
 	log.Printf("after run config")
 
 	// Routes
-	app.GET("/", rest.Hello)
-	homeRouting(app, "/test")
 	authRouting(app, "/auth")
 
 	// Middleware
@@ -42,14 +40,6 @@ func main() {
 	app.Logger.Fatal(app.Start(fmt.Sprintf(":%s", serverPort)))
 }
 
-func homeRouting(app *echo.Echo, routerString string) {
-	homeGroup := app.Group(routerString)
-
-	// Methods
-	homeGroup.GET("/", rest.HomePage)
-	homeGroup.GET("/json", rest.JsonResponseSample)
-	homeGroup.GET("/test-grpc", rest.TestGrpcMessage)
-}
 func authRouting(app *echo.Echo, routerString string) {
 	authGroup := app.Group(routerString)
 	authGroup.POST("/register", rest.Register)
