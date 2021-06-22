@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/adapter/rest"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/config"
-	"github.com/joho/godotenv"
+	app2 "github.com/DuongVu98/passnet-authentication/src/main/go/config/app"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"log"
@@ -12,10 +12,11 @@ import (
 )
 
 func main() {
-	err := godotenv.Load(getEnvFile())
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	//err := godotenv.Load(getEnvFile())
+	//if err != nil {
+	//	log.Fatal("Error loading .env file")
+	//}
+	app2.LoadEnv()
 
 	serverPort := os.Getenv("SERVER_PORT")
 	log.Printf("serverPort: %v", serverPort)

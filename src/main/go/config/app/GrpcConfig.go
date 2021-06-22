@@ -4,14 +4,11 @@ import (
 	"flag"
 	"fmt"
 	myproto "github.com/DuongVu98/passnet-authentication/src/main/gen/src/main/proto"
-	"github.com/joho/godotenv"
 	"google.golang.org/grpc"
 	"log"
 	"net"
 	"os"
 )
-
-var envErr = godotenv.Load(fmt.Sprintf("%v.env.dev", "env/"))
 
 func GrpcConfig() {
 	grpcPort := os.Getenv("GRPC_PORT")
@@ -30,6 +27,7 @@ func GrpcConfig() {
 var grpcClient myproto.EventProducerClient
 
 func ConfigGrpcConnectionOption() {
+	LoadEnv()
 	var sagaHost = os.Getenv("GRPC_SAGA_HOST")
 	var sagaPort = os.Getenv("GRPC_SAGA_PORT")
 	var opts []grpc.DialOption

@@ -1,18 +1,8 @@
 version: '3'
 tasks:
-  set-env:
-    cmds:
-      - export PATH=$PATH:/usr/local/go/bin
-  get-plugins:
-    cmds:
-      - go get github.com/golang/protobuf/protoc-gen-go
-      - go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.0
   run-dev:
     cmds:
       - ENV=development go run src/main/main.go
-  run-vagrant:
-    cmds:
-      - ENV=vagrant go run src/main/main.go
   run-prod:
     cmds:
       - ENV=production go run src/main/main.go
