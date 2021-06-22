@@ -31,15 +31,7 @@ func (step PublishEventStep) Execute(c command.BaseCommand) (aggregate.User, err
 			var grpcClientError = client.Send(eventToSend)
 
 			if grpcClientError != nil {
-				var oktaClient = app.OktaClient()
-				var _, _ = oktaClient.User.DeactivateUser(context.Background(), user.Uid.Value, query.NewQueryParams())
-				var resp, err = oktaClient.User.DeactivateOrDeleteUser(context.Background(), user.Uid.Value, query.NewQueryParams())
-				if err != nil {
-					log.Panicln(err)
-				} else {
-					log.Println("Grpc client error, about to delete created user...")
-					log.Printf("Transactional success: %v", resp.Status)
-				}
+				rollbackCreateUserLocalTransaction(user.Uid.Value)
 				return user, grpcClientError
 			} else {
 				return user, nil
@@ -47,5 +39,17 @@ func (step PublishEventStep) Execute(c command.BaseCommand) (aggregate.User, err
 		}
 	default:
 		return step.Executor.Execute(c)
+	}
+}
+
+func rollbackCreateUserLocalTransaction(userId string)  {
+	var oktaClient = app.OktaClient()
+	var _, _ = oktaClient.User.DeactivateUser(context.Background(), userId, query.NewQueryParams())
+	var resp, err = oktaClient.User.DeactivateOrDeleteUser(context.Background(), userId, query.NewQueryParams())
+	if err != nil {
+		log.Panicln(err)
+	} else {
+		log.Println("Grpc client error, about to delete created user...")
+		log.Printf("Transactional success: %v", resp.Status)
 	}
 }
