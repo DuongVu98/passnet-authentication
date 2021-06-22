@@ -6,4 +6,5 @@ import (
 
 func RunAppConfig() {
 	go app.GrpcConfig()
+	app.ConfigGrpcConnectionOption()
 }

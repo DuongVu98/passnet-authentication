@@ -31,3 +31,6 @@ tasks:
   run-build:
     cmds:
       - ENV=vagrant ./main
+  get-windows-localhost:
+    cmds:
+      - grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'

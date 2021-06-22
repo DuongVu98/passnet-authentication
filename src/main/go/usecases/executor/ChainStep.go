@@ -24,7 +24,10 @@ func (step PublishEventStep) Execute(c command.BaseCommand) (aggregate.User, err
 			}
 
 			var client = client2.GetSagaClient()
-			client.Send(eventToSend)
+			var grpcClientError = client.Send(eventToSend)
+			if grpcClientError != nil {
+				return user, grpcClientError
+			}
 			return user, nil
 		}
 	default:

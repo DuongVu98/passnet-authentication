@@ -21,11 +21,7 @@ func main() {
 	log.Printf("serverPort: %v", serverPort)
 
 	app := echo.New()
-
-	// wire beans (manually)
-	log.Printf("before run config")
 	config.RunAppConfig()
-	log.Printf("after run config")
 
 	// Routes
 	authRouting(app, "/auth")

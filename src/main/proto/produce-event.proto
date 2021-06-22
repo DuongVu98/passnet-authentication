@@ -12,9 +12,10 @@ message SagaResponse {
 }
 
 message UserRegisteredEvent {
-    string uid = 1;
-    string username = 2;
-    string email = 3;
-    string firstName = 4;
-    string lastName = 5;
+    string eventId = 1;
+    string uid = 2;
+    string username = 3;
+    string email = 4;
+    string firstName = 5;
+    string lastName = 6;
 }

@@ -8,7 +8,7 @@ import (
 	"log"
 )
 
-var grpcClient = app.GetSagaEventProducerClient()
+
 
 type SagaClient struct {
 
@@ -18,7 +18,9 @@ func GetSagaClient() SagaClient {
 	return SagaClient{}
 }
 
-func (client SagaClient) Send(event event.UserRegisteredEvent) {
+func (client SagaClient) Send(event event.UserRegisteredEvent) error {
+	var grpcClient = app.GetSagaEventProducerClient()
+
 	log.Printf("send event %v", event)
 	var message = gen.UserRegisteredEvent{
 		Uid: event.Uid,
@@ -26,11 +28,14 @@ func (client SagaClient) Send(event event.UserRegisteredEvent) {
 		Email: event.Email,
 		FirstName: event.FirstName,
 		LastName: event.LastName,
+		EventId: "event-1",
 	}
 	var response, err = grpcClient.ProduceUserRegisteredEvent(context.Background(), &message)
 
 	if err != nil {
 		log.Printf("err during client call grpc %v", err)
+		return err
 	}
 	log.Printf("message from grpc server %v", response)
+	return nil
 }

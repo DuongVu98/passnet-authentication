@@ -34,18 +34,19 @@ func (e RegisterCommandExecutor) Execute(c command.BaseCommand) (aggregate.User,
 
 		if err != nil {
 			log.Printf("Failed: %s", err)
+			return aggregate.User{}, err
+		} else {
+			log.Printf("repsonse created user: %v", resp.NextPage)
+			log.Printf("user created: %v", user.Id)
+
+			return aggregate.User{
+				Uid:        aggregate.UserId{Value: user.Id},
+				Username:   aggregate.Username{Value: c.(command.RegisterCommand).Username},
+				Email:      aggregate.Email{Value: c.(command.RegisterCommand).Email},
+				Profile:    aggregate.UserProfile{FirstName: c.(command.RegisterCommand).FirstName, LastName: c.(command.RegisterCommand).LastName},
+				Credential: aggregate.UserCredential{Password: c.(command.RegisterCommand).Password},
+			}, nil
 		}
-
-		log.Printf("repsonse created user: %s", resp.NextPage)
-		log.Printf("user created: %v", user)
-
-		return aggregate.User{
-			Uid: aggregate.UserId{Value: user.Id},
-			Username: aggregate.Username{Value: c.(command.RegisterCommand).Username},
-			Email: aggregate.Email{Value: c.(command.RegisterCommand).Email},
-			Profile: aggregate.UserProfile{FirstName: c.(command.RegisterCommand).FirstName, LastName: c.(command.RegisterCommand).LastName},
-			Credential: aggregate.UserCredential{Password: c.(command.RegisterCommand).Password},
-		}, nil
 	default:
 		return aggregate.User{}, exception.InvalidCommandException{}
 	}
