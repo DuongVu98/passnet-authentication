@@ -10,9 +10,9 @@ type CommandExecutorFactory struct {
 }
 
 func (cef CommandExecutorFactory) Produce(command command.RegisterCommand) executor.CommandExecutor {
-	return chain.PublishEventStep{
-		Executor: chain.BackupCompensatingStep{
-			Executor: chain.PrepareEventIdStep{
+	return chain.PrepareEventIdStep{
+		Executor: chain.PublishEventStep{
+			Executor: chain.BackupCompensatingStep{
 				Executor: executor.RegisterCommandExecutor{},
 			},
 		},

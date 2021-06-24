@@ -17,7 +17,8 @@ func (step PublishEventStep) Execute(requestContext context.Context,c command.Ba
 	case reflect.TypeOf(command.RegisterCommand{}).String():
 		var user, err = step.Executor.Execute(requestContext, c)
 		if err != nil {
-			return step.Executor.Execute(requestContext, c)
+			log.Printf("PublishEventStep: Failed - %s", err)
+			return aggregate.User{}, err
 		} else {
 			var eventToSend = event.UserRegisteredEvent{
 				Uid:       user.Uid.Value,

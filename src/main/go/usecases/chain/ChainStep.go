@@ -1,6 +1,8 @@
 package chain
 
-import "github.com/DuongVu98/passnet-authentication/src/main/go/usecases/executor"
+import (
+	"github.com/DuongVu98/passnet-authentication/src/main/go/usecases/executor"
+)
 
 type (
 	PublishEventStep struct {
