@@ -1,6 +1,7 @@
 package rest
 
 import (
+	"context"
 	"fmt"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/command"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/form"
@@ -13,6 +14,9 @@ import (
 var commandExecutorFactory = factory.GetCommandExecutorFactory()
 
 func Register(c echo.Context) (err error) {
+	var requestContext, cancel = context.WithCancel(context.Background())
+	defer cancel()
+
 	m := echo.Map{}
 	err = c.Bind(&m)
 	if err != nil {
@@ -36,7 +40,7 @@ func Register(c echo.Context) (err error) {
 	}
 
 	cme := commandExecutorFactory.Produce(cm)
-	_, executorError := cme.Execute(cm)
+	_, executorError := cme.Execute(requestContext, cm)
 
 	if executorError != nil {
 		return c.JSON(http.StatusInternalServerError, response.ErrorResponse{Message: executorError.Error()})

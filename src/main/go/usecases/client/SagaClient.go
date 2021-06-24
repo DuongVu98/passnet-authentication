@@ -18,7 +18,7 @@ func GetSagaClient() SagaClient {
 	return SagaClient{}
 }
 
-func (client SagaClient) Send(event event.UserRegisteredEvent) error {
+func (client SagaClient) Send(event event.UserRegisteredEvent, eventId string) error {
 	var grpcClient = app.GetSagaEventProducerClient()
 
 	log.Printf("send event %v", event)
@@ -28,7 +28,7 @@ func (client SagaClient) Send(event event.UserRegisteredEvent) error {
 		Email: event.Email,
 		FirstName: event.FirstName,
 		LastName: event.LastName,
-		EventId: "event-1",
+		EventId: eventId,
 	}
 	var response, err = grpcClient.ProduceUserRegisteredEvent(context.Background(), &message)
 

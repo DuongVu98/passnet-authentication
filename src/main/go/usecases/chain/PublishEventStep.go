@@ -1,4 +1,4 @@
-package executor
+package chain
 
 import (
 	"context"
@@ -12,12 +12,12 @@ import (
 	"reflect"
 )
 
-func (step PublishEventStep) Execute(c command.BaseCommand) (aggregate.User, error) {
+func (step PublishEventStep) Execute(requestContext context.Context,c command.BaseCommand) (aggregate.User, error) {
 	switch reflect.TypeOf(c).String() {
 	case reflect.TypeOf(command.RegisterCommand{}).String():
-		var user, err = step.Executor.Execute(c)
+		var user, err = step.Executor.Execute(requestContext, c)
 		if err != nil {
-			return step.Executor.Execute(c)
+			return step.Executor.Execute(requestContext, c)
 		} else {
 			var eventToSend = event.UserRegisteredEvent{
 				Uid:       user.Uid.Value,
@@ -28,7 +28,8 @@ func (step PublishEventStep) Execute(c command.BaseCommand) (aggregate.User, err
 			}
 
 			var client = client2.GetSagaClient()
-			var grpcClientError = client.Send(eventToSend)
+			var eventId = requestContext.Value("eventId").(string)
+			var grpcClientError = client.Send(eventToSend, eventId)
 
 			if grpcClientError != nil {
 				rollbackCreateUserLocalTransaction(user.Uid.Value)
@@ -38,7 +39,7 @@ func (step PublishEventStep) Execute(c command.BaseCommand) (aggregate.User, err
 			}
 		}
 	default:
-		return step.Executor.Execute(c)
+		return step.Executor.Execute(requestContext, c)
 	}
 }
 

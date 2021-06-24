@@ -1,6 +1,7 @@
 package executor
 
 import (
+	"context"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/config/app"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/aggregate"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/command"
@@ -14,7 +15,7 @@ type RegisterCommandExecutor struct {
 	CommandExecutor
 }
 
-func (e RegisterCommandExecutor) Execute(c command.BaseCommand) (aggregate.User, error) {
+func (e RegisterCommandExecutor) Execute(requestContext context.Context, c command.BaseCommand) (aggregate.User, error) {
 	switch reflect.TypeOf(c).String() {
 	case reflect.TypeOf(command.RegisterCommand{}).String():
 		oktaClient := app.OktaClient()
