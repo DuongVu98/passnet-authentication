@@ -9,3 +9,7 @@ import (
 type CommandExecutor interface {
 	Execute(requestContext context.Context, command command.BaseCommand) (aggregate.User, error)
 }
+
+type CompensatingExecutor interface {
+	Rollback(requestContext context.Context, command command.BaseCompensating) error
+}

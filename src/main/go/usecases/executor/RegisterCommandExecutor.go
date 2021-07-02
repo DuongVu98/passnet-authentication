@@ -7,12 +7,14 @@ import (
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/command"
 	"github.com/DuongVu98/passnet-authentication/src/main/go/domain/exception"
 	"github.com/okta/okta-sdk-golang/v2/okta"
+	"github.com/okta/okta-sdk-golang/v2/okta/query"
 	"log"
 	"reflect"
 )
 
 type RegisterCommandExecutor struct {
 	CommandExecutor
+	CompensatingExecutor
 }
 
 func (e RegisterCommandExecutor) Execute(requestContext context.Context, c command.BaseCommand) (aggregate.User, error) {
@@ -50,5 +52,26 @@ func (e RegisterCommandExecutor) Execute(requestContext context.Context, c comma
 		}
 	default:
 		return aggregate.User{}, exception.InvalidCommandException{}
+	}
+}
+
+func (e RegisterCommandExecutor) Rollback(requestContext context.Context, c command.BaseCompensating) error {
+	switch reflect.TypeOf(c).String() {
+	case reflect.TypeOf(command.RegisterCommandCompensating{}).String():
+		oktaClient := app.OktaClient()
+
+		var _, err1 = oktaClient.User.DeactivateUser(app.OktaContext(), c.(command.RegisterCommandCompensating).AggregatId, query.NewQueryParams())
+		if err1 != nil {
+			log.Panic(err1)
+		}
+
+		var _, err2 = oktaClient.User.DeactivateOrDeleteUser(app.OktaContext(), c.(command.RegisterCommandCompensating).AggregatId, query.NewQueryParams())
+		if err2 != nil {
+			log.Panic(err2)
+		}
+
+		return nil
+	default:
+		return exception.InvalidCommandException{}
 	}
 }
