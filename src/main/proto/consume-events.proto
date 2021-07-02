@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_package = "com.cseiu.passnet.saga.classroomsaga";
+option go_package = "github.com/DuongVu98/passnet-authentication/proto";
+
+package consumeEvents;
+
+service CompensatingExecutor {
+  rpc Rollback(EventIdProtobuf) returns (ServiceResponseProtobuf) {}
+}
+
+message ServiceResponseProtobuf {
+  string message = 1;
+}
+
+message EventIdProtobuf {
+  string eventId = 1;
+}

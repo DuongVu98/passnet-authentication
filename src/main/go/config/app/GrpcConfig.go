@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	myproto "github.com/DuongVu98/passnet-authentication/src/main/gen/src/main/proto"
+	grpc2 "github.com/DuongVu98/passnet-authentication/src/main/go/adapter/grpc"
 	"google.golang.org/grpc"
 	"log"
 	"net"
@@ -18,11 +19,14 @@ func GrpcConfig() {
 	}
 
 	grpcServer := grpc.NewServer()
+	compensatingController := grpc2.CompensatingController{}
+	myproto.RegisterCompensatingExecutorServer(grpcServer, &compensatingController)
 	log.Printf("grpc listening on port %v", grpcPort)
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("failed to serve grpc server on port %s: %v", grpcPort, err)
 	}
 }
+
 
 var grpcClient myproto.EventProducerClient
 

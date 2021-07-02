@@ -2,7 +2,7 @@ version: '3'
 tasks:
   run-dev:
     cmds:
-      - ENV=development go run src/main/main.go
+      - ENV=development GRPC_SAGA_HOST=$(task get-windows-localhost) go run src/main/main.go
   run-prod:
     cmds:
       - ENV=production go run src/main/main.go
@@ -13,14 +13,16 @@ tasks:
   gen-proto:
     cmds:
       - rm -rf src/main/gen/*
-      - protoc --go_out=src/main/gen --go-grpc_out=src/main/gen --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative src/main/proto/*.proto \
+      - >
+        protoc --go_out=src/main/gen --go-grpc_out=src/main/gen --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative src/main/proto/*.proto
         --go_opt=Msrc/main/proto/produce-event.proto=github.com/DuongVu98/passnet-authentication/src/main/gen
+        --go_opt=Msrc/main/proto/consume-events.proto=github.com/DuongVu98/passnet-authentication/src/main/gen
   build:
     cmds:
-      - ENV=vagrant go build src/main/main.go
+      - ENV=development go build src/main/main.go
   run-build:
     cmds:
-      - ENV=vagrant ./main
+      - ENV=development ./main
   get-windows-localhost:
     cmds:
       - grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'

@@ -8,10 +8,7 @@ import (
 	"log"
 )
 
-
-
 type SagaClient struct {
-
 }
 
 func GetSagaClient() SagaClient {
@@ -23,12 +20,12 @@ func (client SagaClient) Send(event event.UserRegisteredEvent, eventId string) e
 
 	log.Printf("send event %v", event)
 	var message = gen.UserRegisteredEvent{
-		Uid: event.Uid,
-		Username: event.Username,
-		Email: event.Email,
+		Uid:       event.Uid,
+		Username:  event.Username,
+		Email:     event.Email,
 		FirstName: event.FirstName,
-		LastName: event.LastName,
-		EventId: eventId,
+		LastName:  event.LastName,
+		EventId:   eventId,
 	}
 	var response, err = grpcClient.ProduceUserRegisteredEvent(context.Background(), &message)
 
