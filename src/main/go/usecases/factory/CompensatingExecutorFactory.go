@@ -8,7 +8,6 @@ import (
 )
 
 type CompensatingExecutorFactory struct {
-
 }
 
 func GetCompensatingExecutorFactory() CompensatingExecutorFactory {

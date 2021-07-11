@@ -24,19 +24,21 @@ func Register(c echo.Context) (err error) {
 	}
 
 	registerForm := form.RegisterForm{
-		Email:     fmt.Sprintf("%v", m["email"]),
-		Username:  fmt.Sprintf("%v", m["username"]),
-		Password:  fmt.Sprintf("%v", m["password"]),
-		FirstName: fmt.Sprintf("%v", m["firstName"]),
-		LastName:  fmt.Sprintf("%v", m["lastName"]),
+		Email:       fmt.Sprintf("%v", m["email"]),
+		Username:    fmt.Sprintf("%v", m["username"]),
+		Password:    fmt.Sprintf("%v", m["password"]),
+		FirstName:   fmt.Sprintf("%v", m["firstName"]),
+		LastName:    fmt.Sprintf("%v", m["lastName"]),
+		ProfileRole: fmt.Sprintf("%v", m["role"]),
 	}
 
 	cm := command.RegisterCommand{
-		Username:  registerForm.Username,
-		Email:     registerForm.Email,
-		Password:  registerForm.Password,
-		FirstName: registerForm.FirstName,
-		LastName:  registerForm.LastName,
+		Username:    registerForm.Username,
+		Email:       registerForm.Email,
+		Password:    registerForm.Password,
+		FirstName:   registerForm.FirstName,
+		LastName:    registerForm.LastName,
+		ProfileRole: registerForm.ProfileRole,
 	}
 
 	cme := commandExecutorFactory.Produce(cm)

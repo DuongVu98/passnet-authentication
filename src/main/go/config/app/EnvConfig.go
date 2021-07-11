@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-func LoadEnv()  {
+func LoadEnv() {
 	var err = godotenv.Load(getEnvFile())
 
 	if err != nil {
@@ -19,10 +19,6 @@ func getEnvFile() string {
 	env := os.Getenv("ENV")
 	if env == "development" {
 		return fmt.Sprintf("%v.env.dev", envFolder)
-	} else if env == "vagrant" {
-		return fmt.Sprintf("%v.env.vagrant", envFolder)
-	} else if env == "production" {
-		return fmt.Sprintf("%v.env.prod", envFolder)
 	}
 	return ""
 }

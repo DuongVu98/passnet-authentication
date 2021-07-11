@@ -1,8 +1,8 @@
 version: "3.7"
 
 services:
-  server:
+  passnet-user:
     image: tony16019/passnet-user:latest
     build:
       context: ..
-      dockerfile: Dockerfile
+      dockerfile: docker/Dockerfile

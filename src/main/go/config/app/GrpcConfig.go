@@ -3,32 +3,13 @@ package app
 import (
 	"flag"
 	"fmt"
-	myproto "github.com/DuongVu98/passnet-authentication/src/main/gen/src/main/proto"
-	grpc2 "github.com/DuongVu98/passnet-authentication/src/main/go/adapter/grpc"
+	"github.com/DuongVu98/passnet-authentication/src/main/gen/src/main/proto"
 	"google.golang.org/grpc"
 	"log"
-	"net"
 	"os"
 )
 
-func GrpcConfig() {
-	grpcPort := os.Getenv("GRPC_PORT")
-	lis, err := net.Listen("tcp", fmt.Sprintf(":%s", grpcPort))
-	if err != nil {
-		log.Fatalf("Failed to listen on port %s: %v", grpcPort, err)
-	}
-
-	grpcServer := grpc.NewServer()
-	compensatingController := grpc2.CompensatingController{}
-	myproto.RegisterCompensatingExecutorServer(grpcServer, &compensatingController)
-	log.Printf("grpc listening on port %v", grpcPort)
-	if err := grpcServer.Serve(lis); err != nil {
-		log.Fatalf("failed to serve grpc server on port %s: %v", grpcPort, err)
-	}
-}
-
-
-var grpcClient myproto.EventProducerClient
+var grpcClient proto.EventProducerClient
 
 func ConfigGrpcConnectionOption() {
 	LoadEnv()
@@ -44,9 +25,9 @@ func ConfigGrpcConnectionOption() {
 	if err != nil {
 		log.Panicf("error when Dial: %v", err)
 	}
-	grpcClient = myproto.NewEventProducerClient(conn)
+	grpcClient = proto.NewEventProducerClient(conn)
 }
 
-func GetSagaEventProducerClient() myproto.EventProducerClient {
+func GetSagaEventProducerClient() proto.EventProducerClient {
 	return grpcClient
 }

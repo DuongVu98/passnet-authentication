@@ -20,12 +20,13 @@ func (client SagaClient) Send(event event.UserRegisteredEvent, eventId string) e
 
 	log.Printf("send event %v", event)
 	var message = gen.UserRegisteredEvent{
-		Uid:       event.Uid,
-		Username:  event.Username,
-		Email:     event.Email,
-		FirstName: event.FirstName,
-		LastName:  event.LastName,
-		EventId:   eventId,
+		Uid:         event.Uid,
+		Username:    event.Username,
+		Email:       event.Email,
+		FirstName:   event.FirstName,
+		LastName:    event.LastName,
+		ProfileRole: event.ProfileRole,
+		EventId:     eventId,
 	}
 	var response, err = grpcClient.ProduceUserRegisteredEvent(context.Background(), &message)
 

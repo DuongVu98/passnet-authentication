@@ -12,7 +12,7 @@ import (
 	"reflect"
 )
 
-func (step PublishEventStep) Execute(requestContext context.Context,c command.BaseCommand) (aggregate.User, error) {
+func (step PublishEventStep) Execute(requestContext context.Context, c command.BaseCommand) (aggregate.User, error) {
 	switch reflect.TypeOf(c).String() {
 	case reflect.TypeOf(command.RegisterCommand{}).String():
 		var user, err = step.Executor.Execute(requestContext, c)
@@ -21,11 +21,12 @@ func (step PublishEventStep) Execute(requestContext context.Context,c command.Ba
 			return aggregate.User{}, err
 		} else {
 			var eventToSend = event.UserRegisteredEvent{
-				Uid:       user.Uid.Value,
-				Username:  user.Username.Value,
-				Email:     user.Email.Value,
-				FirstName: user.Profile.FirstName,
-				LastName:  user.Profile.LastName,
+				Uid:         user.Uid.Value,
+				Username:    user.Username.Value,
+				Email:       user.Email.Value,
+				FirstName:   user.Profile.FirstName,
+				LastName:    user.Profile.LastName,
+				ProfileRole: c.(command.RegisterCommand).ProfileRole,
 			}
 
 			var client = client2.GetSagaClient()
@@ -44,7 +45,7 @@ func (step PublishEventStep) Execute(requestContext context.Context,c command.Ba
 	}
 }
 
-func rollbackCreateUserLocalTransaction(userId string)  {
+func rollbackCreateUserLocalTransaction(userId string) {
 	var oktaClient = app.OktaClient()
 	var _, _ = oktaClient.User.DeactivateUser(context.Background(), userId, query.NewQueryParams())
 	var resp, err = oktaClient.User.DeactivateOrDeleteUser(context.Background(), userId, query.NewQueryParams())

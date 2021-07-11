@@ -19,6 +19,7 @@ func (service CompensatingBackupService) Remove(eventId string) {
 }
 
 var compensatingBackupService = CompensatingBackupService{compensatingBackup: make(map[string]command.BaseCompensating)}
+
 func GetCompensatingBackupService() CompensatingBackupService {
 	return compensatingBackupService
 }

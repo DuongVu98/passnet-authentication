@@ -1,9 +1,10 @@
 package event
 
 type UserRegisteredEvent struct {
-	Uid string
-	Username string
-	Email string
-	FirstName string
-	LastName string
+	Uid         string
+	Username    string
+	Email       string
+	FirstName   string
+	LastName    string
+	ProfileRole string
 }

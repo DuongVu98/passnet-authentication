@@ -2,10 +2,10 @@ package aggregate
 
 type (
 	User struct {
-		Uid UserId
-		Username Username
-		Email Email
-		Profile UserProfile
+		Uid        UserId
+		Username   Username
+		Email      Email
+		Profile    UserProfile
 		Credential UserCredential
 	}
 
@@ -20,7 +20,7 @@ type (
 	}
 	UserProfile struct {
 		FirstName string
-		LastName string
+		LastName  string
 	}
 	UserCredential struct {
 		Password string
