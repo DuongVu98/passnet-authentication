@@ -21,12 +21,15 @@ func (step PublishEventStep) Execute(requestContext context.Context, c command.B
 			return aggregate.User{}, err
 		} else {
 			var eventToSend = event.UserRegisteredEvent{
-				Uid:         user.Uid.Value,
-				Username:    user.Username.Value,
-				Email:       user.Email.Value,
-				FirstName:   user.Profile.FirstName,
-				LastName:    user.Profile.LastName,
-				ProfileRole: c.(command.RegisterCommand).ProfileRole,
+				Uid:            user.Uid.Value,
+				Username:       user.Username.Value,
+				Email:          user.Email.Value,
+				FirstName:      user.Profile.FirstName,
+				LastName:       user.Profile.LastName,
+				OrganizationId: c.(command.RegisterCommand).OrganizationId,
+				DepartmentId:   c.(command.RegisterCommand).DepartmentId,
+				CardId:         c.(command.RegisterCommand).CardId,
+				ProfileRole:    c.(command.RegisterCommand).ProfileRole,
 			}
 
 			var client = client2.GetSagaClient()

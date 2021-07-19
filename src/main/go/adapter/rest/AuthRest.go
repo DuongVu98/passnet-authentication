@@ -24,21 +24,27 @@ func Register(c echo.Context) (err error) {
 	}
 
 	registerForm := form.RegisterForm{
-		Email:       fmt.Sprintf("%v", m["email"]),
-		Username:    fmt.Sprintf("%v", m["username"]),
-		Password:    fmt.Sprintf("%v", m["password"]),
-		FirstName:   fmt.Sprintf("%v", m["firstName"]),
-		LastName:    fmt.Sprintf("%v", m["lastName"]),
-		ProfileRole: fmt.Sprintf("%v", m["role"]),
+		Email:          fmt.Sprintf("%v", m["email"]),
+		Username:       fmt.Sprintf("%v", m["username"]),
+		Password:       fmt.Sprintf("%v", m["password"]),
+		FirstName:      fmt.Sprintf("%v", m["firstName"]),
+		LastName:       fmt.Sprintf("%v", m["lastName"]),
+		ProfileRole:    fmt.Sprintf("%v", m["role"]),
+		OrganizationId: fmt.Sprintf("%v", m["organizationId"]),
+		DepartmentId:   fmt.Sprintf("%v", m["departmentId"]),
+		CardId:         fmt.Sprintf("%v", m["cardId"]),
 	}
 
 	cm := command.RegisterCommand{
-		Username:    registerForm.Username,
-		Email:       registerForm.Email,
-		Password:    registerForm.Password,
-		FirstName:   registerForm.FirstName,
-		LastName:    registerForm.LastName,
-		ProfileRole: registerForm.ProfileRole,
+		Username:       registerForm.Username,
+		Email:          registerForm.Email,
+		Password:       registerForm.Password,
+		FirstName:      registerForm.FirstName,
+		LastName:       registerForm.LastName,
+		OrganizationId: registerForm.OrganizationId,
+		DepartmentId:   registerForm.DepartmentId,
+		CardId:         registerForm.CardId,
+		ProfileRole:    registerForm.ProfileRole,
 	}
 
 	cme := commandExecutorFactory.Produce(cm)
