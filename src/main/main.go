@@ -41,6 +41,7 @@ func authRouting(app *echo.Echo, routerString string) {
 	authGroup := app.Group(routerString)
 	authGroup.POST("/register", rest.Register)
 	authGroup.POST("/delete", rest.DeleteUser)
+	authGroup.GET("/all", rest.GetAllUsers)
 }
 
 func getEnvFile() string {

@@ -9,6 +9,15 @@ import (
 	"net/http"
 )
 
+func GetAllUsers(c echo.Context) (err error) {
+	oktaClient := app.OktaClient()
+	oktaContext := app.OktaContext()
+
+	filter := query.NewQueryParams()
+	users, _, _ := oktaClient.User.ListUsers(oktaContext, filter)
+
+	return c.JSON(http.StatusOK, users)
+}
 func DeleteUser(c echo.Context) (err error) {
 	email := c.QueryParam("email")
 	oktaClient := app.OktaClient()
